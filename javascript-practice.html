@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基础知识练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 10px;
+            font-family: 'Consolas', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .output {
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        .output-title {
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .result-box {
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            min-height: 50px;
+        }
+        
+        .highlight {
+            background: #fff59d;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 JavaScript 基础知识练习</h1>
+        <p class="subtitle">变量、数据类型、表达式、流程控制、函数</p>
+
+        <!-- 1. 变量的定义 -->
+        <div class="section">
+            <h2>📦 一、变量的定义</h2>
+            <p>JavaScript 中有三种声明变量的方式：<span class="highlight">var</span>、<span class="highlight">let</span>、<span class="highlight">const</span></p>
+            
+            <div class="code-block">
+// var - 函数作用域，可重复声明
+var name = "张三";
+var name = "李四"; // 可以重复声明
+
+// let - 块级作用域，不可重复声明
+let age = 20;
+// let age = 21; // 报错：不能重复声明
+age = 21; // 可以重新赋值
+
+// const - 常量，声明时必须初始化，不可重新赋值
+const PI = 3.14159;
+// PI = 3.14; // 报错：不能重新赋值
+            </div>
+            
+            <button class="btn" onclick="demoVariables()">运行变量示例</button>
+            <div class="result-box" id="varResult"></div>
+        </div>
+
+        <!-- 2. 数据类型 -->
+        <div class="section">
+            <h2>🔤 二、数据类型</h2>
+            <p>JavaScript 有 8 种基本数据类型：</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>基本类型</h3>
+                    <ul>
+                        <li>String - 字符串</li>
+                        <li>Number - 数字</li>
+                        <li>Boolean - 布尔</li>
+                        <li>Undefined - 未定义</li>
+                        <li>Null - 空值</li>
+                        <li>Symbol - 符号</li>
+                        <li>BigInt - 大整数</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>引用类型</h3>
+                    <ul>
+                        <li>Object - 对象</li>
+                        <li>Array - 数组</li>
+                        <li>Function - 函数</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="demoDataTypes()">运行数据类型示例</button>
+            <div class="result-box" id="typeResult"></div>
+        </div>
+
+        <!-- 3. 表达式 -->
+        <div class="section">
+            <h2>🧮 三、表达式与运算符</h2>
+            
+            <div class="code-block">
+// 算术运算符
+let a = 10, b = 3;
+console.log(a + b);  // 13 - 加法
+console.log(a - b);  // 7 - 减法
+console.log(a * b);  // 30 - 乘法
+console.log(a / b);  // 3.333... - 除法
+console.log(a % b);  // 1 - 取余
+console.log(a ** b); // 1000 - 幂运算
+
+// 比较运算符
+console.log(a > b);   // true
+console.log(a === b); // false (严格相等)
+console.log(a == b);  // false (松散相等)
+
+// 逻辑运算符
+console.log(true && false); // false (与)
+console.log(true || false); // true (或)
+console.log(!true);         // false (非)
+            </div>
+            
+            <button class="btn" onclick="demoExpressions()">运行表达式示例</button>
+            <div class="result-box" id="exprResult"></div>
+        </div>
+
+        <!-- 4. 流程控制 -->
+        <div class="section">
+            <h2>🔄 四、流程控制</h2>
+            
+            <div class="code-block">
+// if-else 条件语句
+let score = 85;
+if (score >= 90) {
+    console.log("优秀");
+} else if (score >= 80) {
+    console.log("良好");
+} else if (score >= 60) {
+    console.log("及格");
+} else {
+    console.log("不及格");
+}
+
+// switch 语句
+let day = 1;
+switch(day) {
+    case 1: console.log("星期一"); break;
+    case 2: console.log("星期二"); break;
+    default: console.log("其他");
+}
+
+// for 循环
+for (let i = 0; i < 5; i++) {
+    console.log("循环次数：" + i);
+}
+
+// while 循环
+let n = 0;
+while (n < 3) {
+    console.log("while: " + n);
+    n++;
+}
+            </div>
+            
+            <button class="btn" onclick="demoControlFlow()">运行流程控制示例</button>
+            <div class="result-box" id="flowResult"></div>
+        </div>
+
+        <!-- 5. 函数 -->
+        <div class="section">
+            <h2>⚡ 五、函数</h2>
+            
+            <div class="code-block">
+// 函数声明
+function greet(name) {
+    return "你好，" + name + "！";
+}
+
+// 函数表达式
+const add = function(a, b) {
+    return a + b;
+};
+
+// 箭头函数
+const multiply = (a, b) => a * b;
+
+// 默认参数
+function greetUser(name = "访客") {
+    return "欢迎，" + name;
+}
+
+// 剩余参数
+function sum(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+            </div>
+            
+            <button class="btn" onclick="demoFunctions()">运行函数示例</button>
+            <div class="result-box" id="funcResult"></div>
+        </div>
+
+        <!-- 综合练习 -->
+        <div class="section">
+            <h2>🎯 六、综合练习</h2>
+            <p>点击按钮运行一个综合示例，展示所有知识点的应用：</p>
+            <button class="btn" onclick="comprehensiveDemo()">运行综合示例</button>
+            <div class="result-box" id="comprehensiveResult"></div>
+        </div>
+    </div>
+
+    <script>
+        // ========== 一、变量的定义 ==========
+        function demoVariables() {
+            let result = "【变量定义示例】\n\n";
+            
+            // var 示例
+            var varName = "使用 var 声明";
+            result += "1. var 声明: " + varName + "\n";
+            var varName = "var 可以重复声明";
+            result += "   重复声明后: " + varName + "\n\n";
+            
+            // let 示例
+            let letAge = 20;
+            result += "2. let 声明: 初始年龄 = " + letAge + "\n";
+            letAge = 21;
+            result += "   重新赋值后: 年龄 = " + letAge + "\n\n";
+            
+            // const 示例
+            const constPI = 3.14159;
+            result += "3. const 声明: PI = " + constPI + "\n";
+            result += "   const 声明的变量不能重新赋值\n";
+            
+            // 块级作用域演示
+            if (true) {
+                let blockVar = "我在块级作用域内";
+                result += "\n4. 块级作用域: " + blockVar;
+            }
+            // console.log(blockVar); // 这里会报错
+            result += "\n   (块级变量在作用域外无法访问)";
+            
+            document.getElementById('varResult').innerText = result;
+        }
+
+        // ========== 二、数据类型 ==========
+        function demoDataTypes() {
+            let result = "【数据类型示例】\n\n";
+            
+            // String
+            let str = "Hello JavaScript";
+            result += "1. String: \"" + str + "\" (类型: " + typeof str + ")\n\n";
+            
+            // Number
+            let num = 42;
+            let floatNum = 3.14;
+            result += "2. Number: " + num + ", " + floatNum + " (类型: " + typeof num + ")\n\n";
+            
+            // Boolean
+            let bool = true;
+            result += "3. Boolean: " + bool + " (类型: " + typeof bool + ")\n\n";
+            
+            // Undefined
+            let undef;
+            result += "4. Undefined: " + undef + " (类型: " + typeof undef + ")\n\n";
+            
+            // Null
+            let nullVal = null;
+            result += "5. Null: " + nullVal + " (类型: " + typeof nullVal + ") ← 注意：typeof null 返回 object\n\n";
+            
+            // Object
+            let obj = { name: "张三", age: 25 };
+            result += "6. Object: " + JSON.stringify(obj) + " (类型: " + typeof obj + ")\n\n";
+            
+            // Array
+            let arr = [1, 2, 3, 4, 5];
+            result += "7. Array: [" + arr.join(", ") + "] (类型: " + typeof arr + ") ← 数组也是 object\n\n";
+            
+            // Function
+            let func = function() { return "我是一个函数"; };
+            result += "8. Function: " + func + " (类型: " + typeof func + ")";
+            
+            document.getElementById('typeResult').innerText = result;
+        }
+
+        // ========== 三、表达式 ==========
+        function demoExpressions() {
+            let result = "【表达式与运算符示例】\n\n";
+            
+            let a = 10, b = 3;
+            
+            // 算术运算
+            result += "【算术运算】a = 10, b = 3\n";
+            result += "  a + b = " + (a + b) + " (加法)\n";
+            result += "  a - b = " + (a - b) + " (减法)\n";
+            result += "  a * b = " + (a * b) + " (乘法)\n";
+            result += "  a / b = " + (a / b).toFixed(2) + " (除法)\n";
+            result += "  a % b = " + (a % b) + " (取余)\n";
+            result += "  a ** b = " + (a ** b) + " (幂运算)\n\n";
+            
+            // 比较运算
+            result += "【比较运算】\n";
+            result += "  a > b → " + (a > b) + "\n";
+            result += "  a === b → " + (a === b) + " (严格相等，值和类型都相同)\n";
+            result += "  a == \"10\" → " + (a == "10") + " (松散相等，只比较值)\n";
+            result += "  a === \"10\" → " + (a === "10") + " (严格相等，类型不同)\n\n";
+            
+            // 逻辑运算
+            result += "【逻辑运算】\n";
+            result += "  true && false → " + (true && false) + " (逻辑与)\n";
+            result += "  true || false → " + (true || false) + " (逻辑或)\n";
+            result += "  !true → " + (!true) + " (逻辑非)\n\n";
+            
+            // 赋值运算
+            let x = 5;
+            result += "【赋值运算】x = 5\n";
+            x += 3;
+            result += "  x += 3 → x = " + x + "\n";
+            x *= 2;
+            result += "  x *= 2 → x = " + x;
+            
+            document.getElementById('exprResult').innerText = result;
+        }
+
+        // ========== 四、流程控制 ==========
+        function demoControlFlow() {
+            let result = "【流程控制示例】\n\n";
+            
+            // if-else
+            result += "【if-else 条件判断】\n";
+            let score = 85;
+            result += "成绩: " + score + " → ";
+            if (score >= 90) {
+                result += "优秀\n";
+            } else if (score >= 80) {
+                result += "良好\n";
+            } else if (score >= 60) {
+                result += "及格\n";
+            } else {
+                result += "不及格\n";
+            }
+            
+            // switch
+            result += "\n【switch 多分支】\n";
+            let day = new Date().getDay();
+            let dayNames = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            result += "今天是: " + dayNames[day] + "\n";
+            
+            // for 循环
+            result += "\n【for 循环】输出 1-5 的平方:\n";
+            for (let i = 1; i <= 5; i++) {
+                result += "  " + i + "² = " + (i * i) + "\n";
+            }
+            
+            // while 循环
+            result += "\n【while 循环】倒计时:\n";
+            let count = 3;
+            while (count > 0) {
+                result += "  " + count + "...\n";
+                count--;
+            }
+            result += "  发射!\n";
+            
+            // for...of 循环
+            result += "\n【for...of 遍历数组】\n";
+            let fruits = ["苹果", "香蕉", "橙子"];
+            result += "水果列表: ";
+            for (let fruit of fruits) {
+                result += fruit + " ";
+            }
+            
+            document.getElementById('flowResult').innerText = result;
+        }
+
+        // ========== 五、函数 ==========
+        function demoFunctions() {
+            let result = "【函数示例】\n\n";
+            
+            // 函数声明
+            function greet(name) {
+                return "你好，" + name + "！";
+            }
+            result += "【函数声明】\n";
+            result += "  greet(\"张三\") → " + greet("张三") + "\n\n";
+            
+            // 函数表达式
+            const add = function(a, b) {
+                return a + b;
+            };
+            result += "【函数表达式】\n";
+            result += "  add(5, 3) → " + add(5, 3) + "\n\n";
+            
+            // 箭头函数
+            const multiply = (a, b) => a * b;
+            result += "【箭头函数】\n";
+            result += "  multiply(4, 5) → " + multiply(4, 5) + "\n\n";
+            
+            // 默认参数
+            function greetUser(name = "访客") {
+                return "欢迎，" + name + "！";
+            }
+            result += "【默认参数】\n";
+            result += "  greetUser() → " + greetUser() + "\n";
+            result += "  greetUser(\"李四\") → " + greetUser("李四") + "\n\n";
+            
+            // 剩余参数
+            function sum(...numbers) {
+                return numbers.reduce((total, num) => total + num, 0);
+            }
+            result += "【剩余参数】\n";
+            result += "  sum(1, 2, 3, 4, 5) → " + sum(1, 2, 3, 4, 5) + "\n";
+            result += "  sum(10, 20) → " + sum(10, 20) + "\n\n";
+            
+            // 回调函数
+            function processArray(arr, callback) {
+                return arr.map(callback);
+            }
+            result += "【回调函数】\n";
+            let numbers = [1, 2, 3, 4];
+            let doubled = processArray(numbers, x => x * 2);
+            result += "  原数组: [" + numbers + "]\n";
+            result += "  翻倍后: [" + doubled + "]";
+            
+            document.getElementById('funcResult').innerText = result;
+        }
+
+        // ========== 六、综合练习 ==========
+        function comprehensiveDemo() {
+            let result = "【综合练习：学生成绩管理系统】\n\n";
+            
+            // 定义学生数据
+            const students = [
+                { name: "张三", scores: [85, 92, 78, 96] },
+                { name: "李四", scores: [76, 88, 90, 82] },
+                { name: "王五", scores: [92, 95, 88, 91] },
+                { name: "赵六", scores: [65, 72, 68, 70] }
+            ];
+            
+            // 计算平均分的函数
+            function calculateAverage(scores) {
+                let sum = 0;
+                for (let score of scores) {
+                    sum += score;
+                }
+                return sum / scores.length;
+            }
+            
+            // 根据平均分评定等级
+            function getGrade(average) {
+                if (average >= 90) return "A (优秀)";
+                else if (average >= 80) return "B (良好)";
+                else if (average >= 70) return "C (中等)";
+                else if (average >= 60) return "D (及格)";
+                else return "F (不及格)";
+            }
+            
+            // 处理每个学生
+            result += "学生成绩统计:\n";
+            result += "-".repeat(50) + "\n";
+            
+            let classTotal = 0;
+            let studentCount = students.length;
+            
+            for (let i = 0; i < students.length; i++) {
+                let student = students[i];
+                let avg = calculateAverage(student.scores);
+                classTotal += avg;
+                
+                result += (i + 1) + ". " + student.name + "\n";
+                result += "   各科成绩: " + student.scores.join(", ") + "\n";
+                result += "   平均分: " + avg.toFixed(2) + "\n";
+                result += "   等级: " + getGrade(avg) + "\n\n";
+            }
+            
+            // 班级统计
+            let classAverage = classTotal / studentCount;
+            result += "-".repeat(50) + "\n";
+            result += "班级平均分: " + classAverage.toFixed(2) + "\n";
+            result += "班级等级: " + getGrade(classAverage) + "\n\n";
+            
+            // 找出最高分和最低分
+            let allScores = students.flatMap(s => s.scores);
+            let maxScore = Math.max(...allScores);
+            let minScore = Math.min(...allScores);
+            
+            result += "【附加统计】\n";
+            result += "全班最高分: " + maxScore + "\n";
+            result += "全班最低分: " + minScore + "\n";
+            result += "考试人数: " + studentCount + " 人";
+            
+            document.getElementById('comprehensiveResult').innerText = result;
+        }
+    </script>
+</body>
+</html>
